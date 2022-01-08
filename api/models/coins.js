@@ -4,11 +4,15 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class coins extends Model {
-    
+
     static associate(models) {
       // define association here
-      Coins.hasMany(models.Wallets,{foreignKey: 'coins'})
-      Coins.belongsTo(models.Wallets,{foreignKey: 'coins'})
+      coins.hasMany(models.Wallets, {
+        foreignKey: 'coins'
+      })
+      coins.belongsTo(models.Wallets, {
+        foreignKey: 'coins'
+      })
     }
   };
   coins.init({
