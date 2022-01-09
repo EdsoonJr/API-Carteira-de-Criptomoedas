@@ -9,18 +9,21 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       coin: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       fullname: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       amont: {
-        type: Sequelize.FLOAT
+        type: Sequelize.FLOAT,
+        allowNull: false
       },
-      Transactions:{
+      transactions:{
         allowNull:false,
         type:Sequelize.INTEGER,
-        references:{model: 'Transactions',key: 'id'}
+        references:{model: 'transactions',key: 'id'}
       },
       createdAt: {
         allowNull: false,

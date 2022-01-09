@@ -7,20 +7,30 @@ module.exports = (sequelize, DataTypes) => {
 
     static associate(models) {
       // define association here
-      transactions.hasMany(models.coins, {
-        foreignKey: 'transactions'
-      })
-      transactions.belongsTo(models.coins, {
-        foreignKey: 'transactions'
-      })
+      
     }
   };
   transactions.init({
-    value: DataTypes.FLOAT,
-    datetime: DataTypes.DATE,
-    sendTo: DataTypes.INTEGER,
-    receiveFrom: DataTypes.INTEGER,
-    currentCotations: DataTypes.FLOAT
+    value: {
+      type: DataTypes.FLOAT,
+      allowNull: false
+    },
+    datetime: {
+      type: DataTypes.DATE,
+      allowNull: false
+    },
+    sendTo: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    receiveFrom: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    currentCotations: {
+      type: DataTypes.FLOAT,
+      allowNull: false
+    }
   }, {
     sequelize,
     modelName: 'transactions',

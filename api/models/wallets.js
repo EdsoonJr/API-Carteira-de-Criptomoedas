@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Wallets extends Model {
     /**
@@ -11,13 +12,44 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Wallets.belongsTo(models.coins, {
+        foreignKey: 'coins',
+        onDelete: 'CASCADE'
+      })
     }
   };
   Wallets.init({
-    name: DataTypes.STRING,
-    cpf: DataTypes.STRING,
-    birthdate: DataTypes.DATEONLY,
-    address: DataTypes.INTEGER
+    address: {
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER
+    },
+
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+
+    cpf: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+
+    birthdate: {
+      type: DataTypes.DATEONLY,
+      allowNull: false,
+    },
+    
+    coins: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'coins',
+        key: 'id'
+      }
+    }
+
   }, {
     sequelize,
     modelName: 'Wallets',

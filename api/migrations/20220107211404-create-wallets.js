@@ -9,18 +9,21 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       cpf: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       birthdate: {
-        type: Sequelize.DATEONLY
+        type: Sequelize.DATEONLY,
+        allowNull: false
       },
       coins:{
         allowNull:false,
         type:Sequelize.INTEGER,
-        references:{model: 'Coins',key: 'id'}
+        references:{model: 'coins',key: 'id'}
       },
       createdAt: {
         allowNull: false,

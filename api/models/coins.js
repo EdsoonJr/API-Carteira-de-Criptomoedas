@@ -7,18 +7,33 @@ module.exports = (sequelize, DataTypes) => {
 
     static associate(models) {
       // define association here
-      coins.hasMany(models.Wallets, {
-        foreignKey: 'coins'
-      })
-      coins.belongsTo(models.Wallets, {
-        foreignKey: 'coins'
+      coins.belongsTo(models.transactions, {
+        foreignKey: 'transactions',
+        onDelete: 'CASCADE'
       })
     }
   };
   coins.init({
-    coin: DataTypes.STRING,
-    fullname: DataTypes.STRING,
-    amont: DataTypes.FLOAT
+    coin: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    fullname: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    amont: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+    },
+    Transactions: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'transactions',
+        key: 'id'
+      }
+    }
   }, {
     sequelize,
     modelName: 'coins',

@@ -9,10 +9,12 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       value: {
-        type: Sequelize.FLOAT
+        type: Sequelize.FLOAT,
+        allowNull: false
       },
       datetime: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        allowNull: false
       },
       sendTo: {
         type: Sequelize.INTEGER
@@ -21,7 +23,8 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       currentCotations: {
-        type: Sequelize.FLOAT
+        type: Sequelize.FLOAT,
+        allowNull: false
       },
       createdAt: {
         allowNull: false,
